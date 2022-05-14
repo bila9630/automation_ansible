@@ -1,0 +1,9 @@
+- name: Create express Deployment
+  kubernetes.core.k8s:
+    state: present
+    src: ./k8s/express.deployment.yaml
+
+- name: Create express Service
+  kubernetes.core.k8s:
+    state: present
+    src: ./k8s/express.service.yaml

@@ -1,0 +1,32 @@
+---
+- name: Converge
+  hosts: all
+  
+  tasks:
+    - name: Install k8s
+      delegate_to: 127.0.0.1
+      pip:
+        name: kubernetes
+        state: present
+    - name: Check if default namespace is there
+      delegate_to: 127.0.0.1
+      kubernetes.core.k8s:
+        name: default
+        api_version: v1
+        kind: Namespace
+        state: present
+    - name: setup flask backend
+      delegate_to: 127.0.0.1
+      import_role:
+        name: automation_ansible
+        tasks_from: setup_flask
+    - name: setup express backend
+      delegate_to: 127.0.0.1
+      import_role:
+        name: automation_ansible
+        tasks_from: setup_express
+    - name: setup client
+      delegate_to: 127.0.0.1
+      import_role:
+        name: automation_ansible
+        tasks_from: setup_client

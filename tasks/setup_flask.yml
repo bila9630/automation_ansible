@@ -1,0 +1,9 @@
+- name: Create Flask Deployment by reading the definition from a local file
+  kubernetes.core.k8s:
+    state: present
+    src: ./k8s/flask.deployment.yaml
+
+- name: Create Flask Service
+  kubernetes.core.k8s:
+    state: present
+    src: ./k8s/flask.service.yaml

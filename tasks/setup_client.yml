@@ -1,0 +1,9 @@
+- name: Create client Deployment
+  kubernetes.core.k8s:
+    state: present
+    src: ./k8s/client.deployment.yaml
+
+- name: Create client Service
+  kubernetes.core.k8s:
+    state: present
+    src: ./k8s/client.service.yaml

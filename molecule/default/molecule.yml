@@ -1,0 +1,22 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+platforms:
+  - name: instance
+    image: ubuntu:20.04
+provisioner:
+  name: ansible
+
+scenario:
+  test_sequence:
+    - lint
+    - syntax
+    - create
+    - converge
+    - verify
+    - destroy
+    
+verifier:
+  name: ansible
