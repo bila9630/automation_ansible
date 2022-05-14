@@ -1,4 +1,4 @@
-# ansible template
+# Automation with Ansible
 An example how to deploy kubernetes ressources with Ansible.
 
 The application consists of three services:
